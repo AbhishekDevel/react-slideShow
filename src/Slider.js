@@ -1,14 +1,20 @@
+
 import React from 'react';
+import {getList} from './data';
 
 export default function Slider(){
+  const list = getList()
   return(
     <div className="slider-container">
-    <div className="slide">
-      <h2>Airpods</h2>
-      <h4>$199</h4>
-      <img src="https://i.ibb.co/y08W0Jx/image1.png"/>
-      <a href="#" className="btn">Buy Now</a>
-    </div>
+      {list.map((slide,index) => {
+        return(
+        <div key={index} className="slide">
+        <h2>{slide.name}</h2>
+        <h4>{slide.price}</h4>
+        <img src={slide.imgLink}/>
+        <a href="#" className="btn">Buy Now</a>
+      </div>)
+      })}
     </div>
   )
 }
